@@ -96,7 +96,7 @@ function ScrollCard({
             {/* Bottom content — tags, title, description */}
             <div className="absolute bottom-0 left-0 right-0" style={{ padding: "0 3rem 3.5rem 3rem" }}>
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              {/* <div className="flex flex-wrap gap-2 mb-5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
@@ -106,7 +106,7 @@ function ScrollCard({
                     {tag}
                   </span>
                 ))}
-              </div>
+              </div> */}
 
               {/* Title */}
               <h3 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-medium text-white group-hover:text-cream/80 transition-colors duration-300 mb-2">
