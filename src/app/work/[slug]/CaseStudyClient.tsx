@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/data";
 
@@ -63,13 +64,24 @@ export function CaseStudyClient({ project }: { project: Project }) {
             transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative overflow-hidden rounded-2xl bg-bg-secondary aspect-[16/9] mb-16 md:mb-20"
           >
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(135deg, #8B9D77 0%, #A8B89A 30%, #D4C5B0 60%, #C4704A 100%)",
-              }}
-            />
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                priority
+              />
+            ) : (
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #8B9D77 0%, #A8B89A 30%, #D4C5B0 60%, #C4704A 100%)",
+                }}
+              />
+            )}
           </motion.div>
 
           {/* Content grid */}

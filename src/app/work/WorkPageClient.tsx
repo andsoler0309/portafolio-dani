@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/data";
 
@@ -47,17 +48,30 @@ export function WorkPageClient() {
                 >
                   {/* Large image */}
                   <div className="relative overflow-hidden rounded-2xl bg-bg-secondary aspect-[16/9] mb-8">
-                    <div
-                      className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-                      style={{
-                        background:
-                          i === 0
-                            ? "linear-gradient(135deg, #8B9D77 0%, #A8B89A 30%, #D4C5B0 60%, #FAF7F2 100%)"
-                            : i === 1
-                            ? "linear-gradient(135deg, #C4704A 0%, #D4896A 30%, #E8DFD2 60%, #FAF7F2 100%)"
-                            : "linear-gradient(135deg, #1A2E1A 0%, #8B9D77 30%, #C4704A 60%, #D4C5B0 100%)",
-                      }}
-                    />
+                    <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover object-center"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                          priority={i === 0}
+                        />
+                      ) : (
+                        <div
+                          className="absolute inset-0"
+                          style={{
+                            background:
+                              i === 0
+                                ? "linear-gradient(135deg, #8B9D77 0%, #A8B89A 30%, #D4C5B0 60%, #FAF7F2 100%)"
+                                : i === 1
+                                ? "linear-gradient(135deg, #C4704A 0%, #D4896A 30%, #E8DFD2 60%, #FAF7F2 100%)"
+                                : "linear-gradient(135deg, #1A2E1A 0%, #8B9D77 30%, #C4704A 60%, #D4C5B0 100%)",
+                          }}
+                        />
+                      )}
+                    </div>
                     <div className="absolute inset-0 bg-forest/0 group-hover:bg-forest/10 transition-colors duration-500" />
 
                     {/* Year badge */}

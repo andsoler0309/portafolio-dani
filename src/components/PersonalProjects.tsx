@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { personalProjects } from "@/lib/data";
 
@@ -14,28 +15,37 @@ function ProjectCard({
   return (
     <div className="w-[85vw] md:w-[60vw] lg:w-[45vw] shrink-0 h-full flex items-center">
       <div className="relative w-full h-[80vh] rounded-3xl overflow-hidden group cursor-default">
-        {/* Gradient background */}
-        <div
-          className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-          style={{ background: project.gradient }}
-        />
+        {/* Background: image if provided, else gradient */}
+        <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 85vw, (max-width: 1024px) 60vw, 45vw"
+            />
+          ) : (
+            <div className="absolute inset-0" style={{ background: project.gradient }} />
+          )}
+        </div>
 
         {/* Subtle noise overlay */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')]" />
 
-        {/* Darken overlay for text readability */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+        {/* Strong bottom gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-transparent" />
         <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500" />
 
         {/* Counter — top left */}
         <div className="absolute top-8 left-8 md:top-10 md:left-10">
           <span className="font-display text-7xl md:text-9xl font-light text-white/10">
-            {String(index + 1).padStart(2, "0")}
+            {/* {String(index + 1).padStart(2, "0")} */}
           </span>
         </div>
 
         {/* Tags — top right */}
-        <div className="absolute top-8 right-8 md:top-10 md:right-10 flex flex-wrap gap-2 justify-end max-w-50">
+        {/* <div className="absolute top-8 right-8 md:top-10 md:right-10 flex flex-wrap gap-2 justify-end max-w-50">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -45,7 +55,7 @@ function ProjectCard({
               {tag}
             </span>
           ))}
-        </div>
+        </div> */}
 
         {/* Bottom content */}
         <div
@@ -96,7 +106,7 @@ export function PersonalProjects() {
       className="relative bg-bg-primary"
       style={{ height: "300vh" }}
       id="personal-projects"
-      aria-label="Personal projects"
+      aria-label="Proyectos personales"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         {/* Header — pinned at top, fades out */}
@@ -106,7 +116,7 @@ export function PersonalProjects() {
         >
           <div className="flex items-center gap-4 mb-2">
             <span className="text-fg-muted text-xs tracking-[0.2em] uppercase font-medium">
-              Personal projects
+              Proyectos personales
             </span>
             <span className="h-px flex-1 bg-stone/30" />
             <span className="text-fg-muted text-xs tracking-wider font-mono">

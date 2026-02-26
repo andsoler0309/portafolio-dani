@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { siteConfig } from "@/lib/data";
 import { SectionHeader } from "@/components/SectionHeader";
 
@@ -65,19 +66,19 @@ export function AboutPageClient() {
               className="lg:col-span-5"
             >
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-bg-secondary sticky top-24">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, #8B9D77 0%, #D4C5B0 35%, #C4704A 65%, #1A2E1A 100%)",
-                  }}
+                <Image
+                  src="/images/about-image.jpg"
+                  alt={siteConfig.name}
+                  fill
+                  className="object-cover"
+                  priority
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 to-transparent" style={{ padding: "0 3rem 3.5rem 3rem" }}>
                   <p className="text-white/80 text-xs tracking-widest uppercase mb-1">
-                    Based in Colombia
+                    Ubicada en Colombia 
                   </p>
                   <p className="text-white font-[family-name:var(--font-display)] text-xl italic">
-                    Stories are how we make sense of the world.
+                    Las historias son la manera en que le damos sentido al mundo.
                   </p>
                 </div>
               </div>
@@ -95,41 +96,34 @@ export function AboutPageClient() {
                 }}
               >
                 <p className="text-fg-muted text-sm tracking-widest uppercase mb-4">
-                  About
+                  Sobre mí
                 </p>
                 <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] mb-8">
                   {siteConfig.name}
                 </h1>
                 <div className="space-y-6 text-fg-secondary text-base md:text-lg leading-relaxed max-w-2xl">
                   <p>
-                    I&#39;m a content strategist who believes the best brands
-                    don&#39;t just speak — they{" "}
+                    Profesional en Comunicación y Periodismo con más de{" "}
                     <em className="text-terracotta not-italic font-medium">
-                      resonate
-                    </em>
-                    . For the past six years, I&#39;ve been building content
-                    systems for wellness, sports, and lifestyle brands that care
-                    as much about their story as their product.
+                      7 años de experiencia
+                    </em>{" "}
+                    en estrategia de contenidos, marketing digital y construcción de marca.
                   </p>
                   <p>
-                    My work sits at the intersection of brand psychology,
-                    cultural insight, and narrative design. I don&#39;t just make
-                    content — I build the strategic architecture that makes
-                    content work. From voice guidelines to editorial ecosystems,
-                    from community frameworks to campaign narratives.
+                    He liderado planes editoriales, narrativas de marca y ecosistemas de
+                    contenido para productos digitales, asegurando coherencia,
+                    posicionamiento y resultados medibles.
                   </p>
                   <p>
-                    Before content strategy, I studied behavioral psychology and
-                    creative writing — a combination that taught me that every
-                    great story is really about understanding what people{" "}
-                    <em>need</em> to hear, not just what a brand wants to say.
+                    Combino pensamiento estratégico, análisis de métricas y{" "}
+                    <em className="text-terracotta not-italic font-medium">storytelling</em>{" "}
+                    para convertir información compleja en mensajes claros, educativos y
+                    de alto impacto.
                   </p>
                   <p>
-                    When I&#39;m not building content systems, you&#39;ll find me
-                    on a trail somewhere, deep in a breathwork session, or
-                    annotating a book about human motivation. Movement and
-                    mindfulness aren&#39;t just interests — they&#39;re the lens
-                    through which I understand the audiences I write for.
+                    Soy maratonista, creadora de contenido de deporte y apasionada por el
+                    bienestar y la nutrición — integrando disciplina, comunidad y propósito
+                    en mi forma de construir marca.
                   </p>
                 </div>
               </motion.div>

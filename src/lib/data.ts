@@ -7,6 +7,8 @@ export interface Project {
   description: string;
   longDescription: string;
   image: string;
+  imageLayout?: "cover" | "float";
+  shadowColor?: string;
   year: string;
   results?: string[];
 }
@@ -25,7 +27,7 @@ export const siteConfig = {
   title: "Content Specialist",
   tagline: "I craft stories that move people.",
   subtitle:
-    "Content strategist for wellness, sports & lifestyle brands — blending narrative, data, and cultural insight to build movements, not just campaigns.",
+    "Estratega de contenidos con +7 años construyendo narrativas de marca, ecosistemas editoriales y resultados medibles. Combino data, estructura y storytelling para crear contenido que posiciona y convierte.",
   email: "daniela@example.com",
   linkedin: "https://linkedin.com/in/daniela-reyes",
   instagram: "https://instagram.com/daniela.creates",
@@ -34,16 +36,17 @@ export const siteConfig = {
 
 export const projects: Project[] = [
   {
-    id: "luma-wellness",
-    title: "Brand Narrative Redesign",
-    client: "LUMA WELLNESS",
-    category: "Content Strategy",
+    id: "mercado-libre",
+    title: "Estrategia del ecosistema de contenidos para Mercado Libre",
+    client: "MERCADO LIBRE",
+    category: "UX Writer",
     tags: ["Brand Voice", "Editorial Strategy", "Wellness"],
     description:
-      "Rebuilt the entire brand narrative for a DTC wellness brand — from manifesto to product storytelling — increasing organic engagement by 340%.",
+      "Lideré y estructuré el ecosistema integral de contenidos para flujos clave del producto, alineando storytelling, data y equipos multidisciplinarios para garantizar coherencia de marca, claridad en la experiencia y resultados medibles a gran escala.",
     longDescription:
       "Luma Wellness was stuck in generic health-speak. I led a complete narrative overhaul: new brand voice guidelines, editorial calendar, content pillars, and a storytelling framework that connected their mushroom-based supplements to deeper themes of daily ritual and intentional living.",
     image: "/images/project-1.jpg",
+    shadowColor: "#FFE600",
     year: "2025",
     results: [
       "340% increase in organic engagement",
@@ -52,16 +55,17 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "stride-athletics",
-    title: "Community-Led Content System",
-    client: "STRIDE ATHLETICS",
-    category: "Content Systems",
+    id: "triario",
+    title: "Gestión de proyectos de comunicación digital para Triario",
+    client: "TRIARIO",
+    category: "Project Manager",
     tags: ["Community", "UGC Strategy", "Sports"],
     description:
-      "Designed a scalable content ecosystem for a running brand — merging athlete stories, data-driven editorial, and community-generated content.",
+      "Lideré la ejecución integral de proyectos de contenido y comunicación para múltiples marcas, coordinando equipos multidisciplinarios y gestionando flujos en HubSpot para asegurar cumplimiento, coherencia estratégica y resultados en todo el funnel.",
     longDescription:
       "Stride Athletics had products but no soul. I built a content system that turned their community of 50K runners into co-creators. This included a UGC framework, athlete story templates, a weekly editorial series ('Miles & Mindset'), and performance content tied to real running data.",
     image: "/images/project-2.jpg",
+    imageLayout: "cover",
     year: "2025",
     results: [
       "UGC submissions increased 580%",
@@ -70,16 +74,17 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "terra-studio",
-    title: "Editorial Identity & Launch",
-    client: "TERRA STUDIO",
-    category: "Brand Launch",
+    id: "mesfix",
+    title: "Estrategia Integral de Contenidos y Posicionamiento de Marca",
+    client: "MESFIX",
+    category: "Communications Specialist",
     tags: ["Launch Strategy", "Editorial", "Lifestyle"],
     description:
-      "Created the editorial identity for a lifestyle studio brand — from naming conventions to the full launch content strategy across digital and physical touchpoints.",
+      "Diseñé y ejecuté la estrategia 360 de contenidos digitales (redes, blog, SEO, PR e influenciadores), liderando la narrativa de marca en momentos clave de crecimiento y optimizando el desempeño con base en métricas y resultados.",
     longDescription:
       "Terra Studio was a new concept: part yoga studio, part creative workspace, part café. I developed their editorial identity from scratch — name architecture, tone of voice, launch campaign copy, social content strategy, and an experiential content series called 'Grounded Sessions' that became their signature.",
     image: "/images/project-3.jpg",
+    imageLayout: "cover",
     year: "2024",
     results: [
       "Sold out launch event (300 spots)",
@@ -88,16 +93,17 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "forma-running",
-    title: "360° Campaign & Content Hub",
-    client: "FORMA RUNNING",
-    category: "Campaign Strategy",
+    id: "dattis",
+    title: "Gestión y Análisis de Contenidos Digitales",
+    client: "DATTIS",
+    category: "Analista de comunicación digital",
     tags: ["Campaign", "Video Content", "Sports"],
     description:
-      "Led the full content strategy for a performance running brand's seasonal campaign — from hero film concepts to a content hub that became their top acquisition channel.",
+      "Construí parrillas editoriales y realicé seguimiento de métricas para distintas marcas, optimizando contenido y campañas digitales a partir de resultados y comportamiento de audiencia.",
     longDescription:
       "Forma Running needed more than ads — they needed a narrative engine. I architected a 360° campaign built around the concept 'Every Stride Tells a Story,' producing a hero mini-documentary, athlete interview series, data-driven training content, and a content hub that unified blog, video, and community contributions into a single storytelling platform.",
     image: "/images/project-4.jpg",
+    imageLayout: "cover",
     year: "2024",
     results: [
       "4.8M campaign impressions",
@@ -179,36 +185,40 @@ export interface PersonalProject {
   description: string;
   tags: string[];
   gradient: string;
+  image?: string;
   url?: string;
 }
 
 export const personalProjects: PersonalProject[] = [
   {
-    id: "the-morning-brief",
-    title: "The Morning Brief",
-    tagline: "A daily newsletter on culture, wellness & creativity",
+    id: "dani-cruza-metas",
+    title: "Substack Blog: DaniCruzaMetas",
+    tagline: "DaniCruzaMetas | Narrativa Larga y Storytelling Deportivo",
     description:
-      "A curated daily newsletter blending wellness trends, cultural commentary, and creative inspiration. Grew to 8K subscribers organically in 6 months through word-of-mouth and strategic partnerships.",
+      "Espacio editorial donde transformo mi experiencia como maratonista amateur en reflexiones sobre disciplina, identidad y bienestar, aplicando estructura narrativa y coherencia de marca en formato long-form.",
     tags: ["Newsletter", "Editorial", "Culture"],
     gradient: "linear-gradient(135deg, #1A2E1A 0%, #8B9D77 50%, #A8B89A 100%)",
+    image: "/images/personal-project-1.jpg",
   },
   {
-    id: "grounded-podcast",
-    title: "Grounded",
-    tagline: "Conversations with founders who chose purpose over hype",
+    id: "instagram-crecimiento",
+    title: "Instagram en Crecimiento",
+    tagline: "Estrategia de Contenido y Crecimiento Orgánico en Running",
     description:
-      "A long-form podcast interviewing founders in wellness, sport, and lifestyle who prioritize sustainable growth over virality. 45 episodes, 120K total listens, featured on Apple Podcasts 'New & Noteworthy.'",
+      "Desarrollo contenido en formatos cortos (reels, carruseles y guiones narrativos) optimizando storytelling, consistencia y análisis de engagement para construir comunidad en el ecosistema de deporte y bienestar.",
     tags: ["Podcast", "Interviews", "Founders"],
     gradient: "linear-gradient(135deg, #C4704A 0%, #D4896A 50%, #FAF7F2 100%)",
+    image: "/images/personal-project-2.jpg",
   },
   {
-    id: "campo-zine",
-    title: "Campo",
-    tagline: "A seasonal digital zine on movement & place",
+    id: "fut-fem-colombia",
+    title: "FutFem Colombia",
+    tagline: "Estrategia y Creación de Contenido para Instagram Deportivo",
     description:
-      "A quarterly digital publication exploring the intersection of movement, geography, and identity. Each issue is themed around a place and features photography, essays, and interviews with local athletes and artists.",
+      "Desarrollo contenido sobre fútbol femenino para la cuenta de FutFemColombia, aplicando estructura editorial, claridad informativa y enfoque en engagement para fortalecer comunidad y visibilidad del deporte.",
     tags: ["Zine", "Photography", "Movement"],
     gradient: "linear-gradient(135deg, #D4C5B0 0%, #8B9D77 50%, #1A2E1A 100%)",
+    image: "/images/personal-project-3.jpg",
   },
 ];
 

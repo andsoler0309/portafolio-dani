@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { SectionHeader } from "./SectionHeader";
 
@@ -12,7 +13,7 @@ export function AboutTeaser() {
       aria-label="About preview"
     >
       <div className="container-main">
-        <SectionHeader label="A bit about me" />
+        <SectionHeader label="Un poco sobre mí" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Image placeholder */}
@@ -24,24 +25,12 @@ export function AboutTeaser() {
             className="lg:col-span-5"
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-bg-secondary">
-              {/* Placeholder gradient image */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(160deg, #8B9D77 0%, #D4C5B0 40%, #C4704A 70%, #1A2E1A 100%)",
-                }}
+              <Image
+                src="/images/about-image.jpg"
+                alt="Daniela Amórtegui"
+                fill
+                className="object-cover"
               />
-              <div className="absolute inset-0 flex items-end" style={{ padding: "0 3rem 3.5rem 3rem" }}>
-                <div className="text-white/90">
-                  <p className="text-xs tracking-widest uppercase mb-1 opacity-70">
-                    Daniela Amórtegui
-                  </p>
-                  <p className="font-[family-name:var(--font-display)] text-lg italic">
-                    Movement is my muse.
-                  </p>
-                </div>
-              </div>
             </div>
           </motion.div>
 

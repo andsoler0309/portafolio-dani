@@ -25,7 +25,7 @@ const letterVariants = {
 };
 
 export function Hero() {
-  const greeting = "Hey, I'm";
+  const greeting = "Hola!, soy";
   const name = siteConfig.name;
 
   return (
@@ -114,7 +114,7 @@ export function Hero() {
                 className="w-[1px] h-8 bg-stone"
               />
               <span className="text-fg-muted text-xs tracking-widest uppercase">
-                Scroll to explore
+                Scroll para explorar
               </span>
             </motion.div>
           </div>

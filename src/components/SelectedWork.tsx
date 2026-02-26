@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/data";
 import { SectionHeader } from "./SectionHeader";
@@ -60,21 +61,49 @@ function ScrollCard({
           aria-label={`View ${project.title} case study for ${project.client}`}
         >
           {/* Full-height card */}
-          <div className="relative overflow-hidden rounded-3xl h-[80vh] shadow-2xl shadow-black/10">
-            {/* Gradient background */}
-            <div
-              className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-              style={{ background: gradients[index % gradients.length] }}
-            />
+          <div className="relative overflow-hidden rounded-3xl h-[80vh]">
+            {/* Background */}
+            {project.image && project.imageLayout === "cover" ? (
+              <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 900px) 100vw, 900px"
+                  priority={index === 0}
+                />
+              </div>
+            ) : (
+              <>
+                <div
+                  className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  style={{ background: project.image ? "#FFE600" : gradients[index % gradients.length] }}
+                />
+                {/* Floating screenshot — right side */}
+                {project.image && (
+                  <div className="absolute right-[-4%] top-[5%] bottom-[5%] w-[52%] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-[-8px] group-hover:scale-[1.02]">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top rounded-2xl shadow-2xl shadow-black/30"
+                      sizes="500px"
+                      priority={index === 0}
+                    />
+                  </div>
+                )}
+              </>
+            )}
             {/* Hover tint */}
             <div className="absolute inset-0 bg-forest/0 group-hover:bg-forest/20 transition-colors duration-500" />
             {/* Readability gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 via-40% to-transparent" />
 
             {/* Counter — top left */}
             <div className="absolute top-8 left-8 md:top-10 md:left-10">
               <span className="font-[family-name:var(--font-display)] text-6xl md:text-8xl font-light text-white/15">
-                {String(index + 1).padStart(2, "0")}
+                {/* {String(index + 1).padStart(2, "0")} */}
               </span>
             </div>
 
@@ -86,12 +115,12 @@ function ScrollCard({
               >
                 {project.client}
               </span>
-              <span
+              {/* <span
                 className="bg-cream/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-[0.15em] text-forest/95 border border-forest/10"
                 style={{ padding: "0.3rem 1rem" }}
               >
                 {project.year}
-              </span>
+              </span> */}
             </div>
 
             {/* Bottom content — tags, title, description */}
@@ -126,7 +155,7 @@ function ScrollCard({
 
               {/* CTA */}
               <div className="mt-5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                <span className="text-white/90 text-xs font-medium tracking-wider uppercase">View case study</span>
+                <span className="text-white/90 text-xs font-medium tracking-wider uppercase">Ver trabajo</span>
                 <motion.span className="inline-block text-white/90" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>
                   →
                 </motion.span>
@@ -141,9 +170,9 @@ function ScrollCard({
 
 export function SelectedWork() {
   return (
-    <section id="work" aria-label="Selected work">
+    <section id="work" aria-label="Trabajos seleccionados">
       <div className="container-main pt-16 md:pt-24">
-        <SectionHeader label="Selected work" count={projects.length} />
+        <SectionHeader label="Trabajos seleccionados" count={projects.length} />
       </div>
 
       {/* Scroll stack container — each card gets a full viewport height */}
@@ -167,7 +196,7 @@ export function SelectedWork() {
           className="inline-flex items-center gap-3 text-fg-primary hover:text-terracotta transition-colors duration-300 group"
         >
           <span className="text-sm font-medium tracking-wide uppercase">
-            See all work
+            Ver todos los trabajos
           </span>
           <motion.span
             className="inline-block"
