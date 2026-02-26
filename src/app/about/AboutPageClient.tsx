@@ -7,36 +7,33 @@ import { SectionHeader } from "@/components/SectionHeader";
 
 const values = [
   {
-    title: "Curiosity over certainty",
-    body: "I'd rather ask the uncomfortable question than assume I know the answer. The best content comes from genuine inquiry.",
+    title: "Claridad sobre ruido",
+    body: "Prefiero simplificar lo complejo antes que adornarlo. La estrategia empieza cuando el mensaje se entiende sin esfuerzo.",
   },
   {
-    title: "Systems over one-offs",
-    body: "A viral post is nice. A content engine that consistently grows a brand? That's the real work.",
+    title: "Sistemas sobre improvisación",
+    body: "Una pieza puede funcionar. Un sistema bien diseñado construye marca, reputación y crecimiento sostenible.",
   },
   {
-    title: "People over personas",
-    body: "I don't write for demographics. I write for humans — with fears, aspirations, rituals, and real lives.",
+    title: "Personas sobre métricas aisladas",
+    body: "Las métricas importan, pero detrás de cada número hay alguien tomando decisiones reales. El contenido debe servir a esa persona primero.",
   },
   {
-    title: "Movement over perfection",
-    body: "Progress, iteration, momentum. I'd rather ship something brave and refine than wait for perfect.",
+    title: "Movimiento sobre perfección",
+    body: "Iterar, aprender y optimizar. Prefiero avanzar con intención y ajustar en el camino que esperar una versión perfecta que nunca sale.",
   },
 ];
 
 const skills = [
-  "Brand Narrative Development",
-  "Content Strategy & Architecture",
-  "Editorial Direction",
-  "Community Content Systems",
-  "UGC Frameworks",
-  "Campaign Concepting",
-  "Audience Research & Insights",
-  "Content Performance Analysis",
-  "Brand Voice Guidelines",
-  "Cross-Platform Storytelling",
-  "Stakeholder Alignment",
-  "Team Leadership & Mentoring",
+  "Arquitectura de Marca y Voz",
+  "Estrategia Integral de Contenidos",
+  "Estrategia de Redes Sociales y Comunidad",
+  "Diseño de Ecosistemas y Flujos Operativos",
+  "Dirección Editorial y Control de Calidad",
+  "Performance y Optimización Basada en Data",
+  "Storytelling Multicanal",
+  "Alineación de Stakeholders y Gestión de Equipos",
+  "Estrategia de Crecimiento y Funnel",
 ];
 
 const interests = [
@@ -144,7 +141,7 @@ export function AboutPageClient() {
             className="flex items-center justify-between pb-7 border-b border-stone/40 shrink-0"
           >
             <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted font-medium">
-              Values
+              Valores
             </span>
             <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted/40 font-medium">
               {values.length.toString().padStart(2, "0")}
@@ -200,7 +197,7 @@ export function AboutPageClient() {
             className="flex items-center justify-between pb-7 border-b border-stone/30 mb-16 shrink-0"
           >
             <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted font-medium">
-              Skills & Expertise
+              Skills y experticia
             </span>
             <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted/40 font-medium">
               {skills.length.toString().padStart(2, "0")}
@@ -218,11 +215,11 @@ export function AboutPageClient() {
               className="md:col-span-4 md:sticky md:top-32 self-start"
             >
               <p className="font-[family-name:var(--font-display)] text-2xl md:text-[2rem] lg:text-[2.4rem] font-medium leading-[1.2] text-fg-primary mb-10">
-                A full-stack toolkit for building brands that{" "}
-                <span className="text-terracotta italic">actually work.</span>
+                Estrategia, sistema y ejecución para construir marcas{" "}
+                <span className="text-terracotta italic">que crecen.</span>
               </p>
               <p className="text-fg-muted text-base leading-relaxed">
-                Strategy, story, systems — the whole chain from insight to execution.
+                De la narrativa al performance con coherencia y propósito.
               </p>
             </motion.div>
 

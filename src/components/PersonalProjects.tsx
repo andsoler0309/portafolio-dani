@@ -67,10 +67,39 @@ function ProjectCard({
             {project.tagline}
           </p>
 
-          {/* Title */}
-          <h3 className="font-display text-3xl md:text-5xl font-medium text-white mb-4 leading-[1.1]">
-            {project.title}
-          </h3>
+          {/* Title row */}
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <h3 className="font-display text-3xl md:text-5xl font-medium text-white leading-[1.1]">
+              {project.title}
+            </h3>
+
+            {/* Link arrow */}
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="shrink-0 mt-1 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                aria-label={`Visitar ${project.title}`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 17L17 7" />
+                  <path d="M7 7h10v10" />
+                </svg>
+              </a>
+            )}
+          </div>
 
           {/* Description */}
           <p className="text-white/70 text-sm md:text-base max-w-lg leading-relaxed">

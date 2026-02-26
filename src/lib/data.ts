@@ -34,9 +34,9 @@ export const siteConfig = {
   tagline: "I craft stories that move people.",
   subtitle:
     "Estratega de contenidos con +7 años construyendo narrativas de marca, ecosistemas editoriales y resultados medibles. Combino data, estructura y storytelling para crear contenido que posiciona y convierte.",
-  email: "daniela@example.com",
-  linkedin: "https://linkedin.com/in/daniela-reyes",
-  instagram: "https://instagram.com/daniela.creates",
+  email: "daniela.amortegui@gmail.com",
+  linkedin: "https://www.linkedin.com/in/danielaamorteguim/",
+  instagram: "https://www.instagram.com/daniamortegui",
   twitter: "https://twitter.com/danielacreates",
 };
 
@@ -247,6 +247,7 @@ export const personalProjects: PersonalProject[] = [
     tags: ["Newsletter", "Editorial", "Culture"],
     gradient: "linear-gradient(135deg, #1A2E1A 0%, #8B9D77 50%, #A8B89A 100%)",
     image: "/images/personal-project-1.jpg",
+    url: "https://dani-cruza-metas.substack.com",
   },
   {
     id: "instagram-crecimiento",
@@ -257,6 +258,7 @@ export const personalProjects: PersonalProject[] = [
     tags: ["Podcast", "Interviews", "Founders"],
     gradient: "linear-gradient(135deg, #C4704A 0%, #D4896A 50%, #FAF7F2 100%)",
     image: "/images/personal-project-2.jpg",
+    url: "https://www.instagram.com/daniamortegui",
   },
   {
     id: "fut-fem-colombia",
@@ -267,6 +269,7 @@ export const personalProjects: PersonalProject[] = [
     tags: ["Zine", "Photography", "Movement"],
     gradient: "linear-gradient(135deg, #D4C5B0 0%, #8B9D77 50%, #1A2E1A 100%)",
     image: "/images/personal-project-3.jpg",
+    url: "https://instagram.com/futfemcolombia",
   },
 ];
 

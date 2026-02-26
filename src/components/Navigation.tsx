@@ -9,7 +9,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Trabajo" },
+  { href: "/work", label: "Experiencia" },
   { href: "/about", label: "Sobre mí" },
 ];
 

@@ -7,8 +7,8 @@ import { siteConfig } from "@/lib/data";
 
 const footerLinks = [
   { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
+  { label: "Experiencia", href: "/work" },
+  { label: "Sobre mí", href: "/about" },
 ];
 
 const socialLinks = [
@@ -51,8 +51,8 @@ export function Footer() {
           className="mb-16 md:mb-24"
         >
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.05] max-w-3xl mb-8">
-            Let&#39;s create something that{" "}
-            <span className="text-terracotta italic">moves people.</span>
+            Vamos a crear algo que{" "}
+            <span className="text-terracotta italic">mueva personas.</span>
           </h2>
           <a
             href={`mailto:${siteConfig.email}`}
@@ -116,7 +116,7 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <p className="section-label mb-4">Contact</p>
+            <p className="section-label mb-4">Contacto</p>
             <nav className="flex flex-col gap-3" aria-label="Social links">
               {socialLinks.map((link) => (
                 <a
@@ -146,7 +146,7 @@ export function Footer() {
             className="text-fg-muted hover:text-fg-primary transition-colors duration-300 text-xs tracking-widest uppercase flex items-center gap-2"
             aria-label="Back to top"
           >
-            Back to top
+            Volver arriba
             <svg
               width="12"
               height="12"
