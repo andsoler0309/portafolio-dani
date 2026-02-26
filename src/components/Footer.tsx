@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 import { siteConfig } from "@/lib/data";
 
@@ -17,9 +18,27 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start 0.55"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 60,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
+  const y = useTransform(smoothProgress, [0, 1], ["8%", "0%"]);
+  const opacity = useTransform(smoothProgress, [0, 0.4], [0, 1]);
+  const scale = useTransform(smoothProgress, [0, 1], [0.97, 1]);
+
   return (
-    <footer
-      className="page-section border-t border-stone/20"
+    <motion.footer
+      ref={ref}
+      style={{ y, opacity, scale }}
+      className="page-section border-t border-stone/20 origin-bottom"
       aria-label="Footer"
     >
       <div className="container-main">
@@ -39,7 +58,7 @@ export function Footer() {
             href={`mailto:${siteConfig.email}`}
             className="inline-flex items-center gap-4 px-8 py-4 bg-forest text-fg-inverse rounded-full hover:bg-sage-dark transition-colors duration-300 group"
           >
-            <span className="text-sm font-medium tracking-wide uppercase">
+            {/* <span className="text-sm font-medium tracking-wide uppercase">
               Get in touch
             </span>
             <motion.span
@@ -48,12 +67,12 @@ export function Footer() {
               transition={{ duration: 0.3 }}
             >
               →
-            </motion.span>
+            </motion.span> */}
           </a>
         </motion.div>
 
         {/* Footer grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8" style={{ marginBottom: "2rem" }}>
           {/* Initials / Credit */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -144,6 +163,6 @@ export function Footer() {
           </button>
         </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

@@ -32,10 +32,10 @@ export function AboutTeaser() {
                     "linear-gradient(160deg, #8B9D77 0%, #D4C5B0 40%, #C4704A 70%, #1A2E1A 100%)",
                 }}
               />
-              <div className="absolute inset-0 flex items-end p-8">
+              <div className="absolute inset-0 flex items-end" style={{ padding: "0 3rem 3.5rem 3rem" }}>
                 <div className="text-white/90">
                   <p className="text-xs tracking-widest uppercase mb-1 opacity-70">
-                    Daniela Reyes
+                    Daniela Amórtegui
                   </p>
                   <p className="font-[family-name:var(--font-display)] text-lg italic">
                     Movement is my muse.

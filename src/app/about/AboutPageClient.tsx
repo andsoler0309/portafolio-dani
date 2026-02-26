@@ -72,9 +72,9 @@ export function AboutPageClient() {
                       "linear-gradient(160deg, #8B9D77 0%, #D4C5B0 35%, #C4704A 65%, #1A2E1A 100%)",
                   }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/40 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 to-transparent" style={{ padding: "0 3rem 3.5rem 3rem" }}>
                   <p className="text-white/80 text-xs tracking-widest uppercase mb-1">
-                    Based in Los Angeles
+                    Based in Colombia
                   </p>
                   <p className="text-white font-[family-name:var(--font-display)] text-xl italic">
                     Stories are how we make sense of the world.
@@ -138,65 +138,130 @@ export function AboutPageClient() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="page-section bg-bg-secondary">
-        <div className="container-main">
-          <SectionHeader label="Values" count={values.length} />
+      {/* ── VALUES ── */}
+      <section className="bg-bg-secondary flex flex-col" style={{ height: "100vh", paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="container-main flex flex-col flex-1">
+          {/* Label */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-between pb-7 border-b border-stone/40 shrink-0"
+          >
+            <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted font-medium">
+              Values
+            </span>
+            <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted/40 font-medium">
+              {values.length.toString().padStart(2, "0")}
+            </span>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {/* Rows stretched to fill remaining height */}
+          <div className="flex-1 flex flex-col">
             {values.map((value, i) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{
-                  delay: i * 0.1,
-                  duration: 0.6,
+                  delay: i * 0.09,
+                  duration: 0.65,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="border-l-2 border-sage/40 pl-6"
+                className="group relative flex-1 grid grid-cols-12 gap-x-4 md:gap-x-10 items-center border-b border-stone/20 hover:border-stone/50 transition-colors duration-500"
               >
-                <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-fg-secondary text-sm md:text-base leading-relaxed">
-                  {value.body}
-                </p>
+                <div className="col-span-2 md:col-span-1">
+                  <span className="font-[family-name:var(--font-display)] text-[3.5rem] md:text-[5rem] font-bold leading-none select-none text-fg-primary/[0.06] group-hover:text-fg-primary/[0.13] transition-colors duration-500 block">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="col-span-10 md:col-span-5 lg:col-span-4">
+                  <h3 className="font-[family-name:var(--font-display)] text-[1.75rem] md:text-[2.2rem] lg:text-[2.75rem] font-medium leading-[1.1] group-hover:text-terracotta transition-colors duration-400">
+                    {value.title}
+                  </h3>
+                </div>
+                <div className="col-span-12 md:col-span-6 lg:col-span-7 md:pl-16 mt-4 md:mt-0">
+                  <p className="text-fg-secondary text-base md:text-lg lg:text-xl leading-[1.8] max-w-prose">
+                    {value.body}
+                  </p>
+                </div>
+                <div className="absolute bottom-0 left-0 h-px w-0 bg-terracotta/50 group-hover:w-full transition-all duration-700 ease-out" />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Skills & Tools */}
-      <section className="page-section">
-        <div className="container-main">
-          <SectionHeader label="Skills & expertise" count={skills.length} />
+      {/* ── SKILLS & EXPERTISE ── */}
+      <section className="bg-bg-primary flex flex-col" style={{ height: "100vh", paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="container-main flex flex-col flex-1">
+          {/* Label */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-between pb-7 border-b border-stone/30 mb-16 shrink-0"
+          >
+            <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted font-medium">
+              Skills & Expertise
+            </span>
+            <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted/40 font-medium">
+              {skills.length.toString().padStart(2, "0")}
+            </span>
+          </motion.div>
 
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill, i) => (
-              <motion.span
-                key={skill}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: i * 0.05,
-                  duration: 0.4,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="px-5 py-2.5 border border-stone/30 rounded-full text-sm text-fg-secondary hover:border-sage hover:text-sage-dark transition-colors duration-300 cursor-default"
-              >
-                {skill}
-              </motion.span>
-            ))}
+          {/* Content stretched to fill */}
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-28">
+            {/* Left: editorial statement */}
+            <motion.div
+              initial={{ opacity: 0, x: -18 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="md:col-span-4 md:sticky md:top-32 self-start"
+            >
+              <p className="font-[family-name:var(--font-display)] text-2xl md:text-[2rem] lg:text-[2.4rem] font-medium leading-[1.2] text-fg-primary mb-10">
+                A full-stack toolkit for building brands that{" "}
+                <span className="text-terracotta italic">actually work.</span>
+              </p>
+              <p className="text-fg-muted text-base leading-relaxed">
+                Strategy, story, systems — the whole chain from insight to execution.
+              </p>
+            </motion.div>
+
+            {/* Right: skill rows stretched */}
+            <div className="md:col-span-8 flex flex-col">
+              {skills.map((skill, i) => (
+                <motion.div
+                  key={skill}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: 0.05 + i * 0.055,
+                    duration: 0.55,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="group flex-1 flex items-center justify-between gap-8 border-b border-stone/20 hover:border-stone/50 transition-colors duration-400 cursor-default"
+                >
+                  <span className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-fg-secondary group-hover:text-fg-primary transition-colors duration-300">
+                    {skill}
+                  </span>
+                  <span className="text-[11px] text-fg-muted/40 group-hover:text-terracotta/60 transition-colors duration-300 tabular-nums shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Interests / Off-the-clock */}
-      <section className="page-section bg-bg-secondary">
+      {/* <section className="page-section bg-bg-primary min-h-screen">
         <div className="container-main">
           <SectionHeader label="Off the clock" />
 
@@ -235,10 +300,10 @@ export function AboutPageClient() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
-      <section className="page-section">
+      <section className="page-section" style={{ height: "100vh", paddingTop: "5rem", paddingBottom: "5rem" }}>
         <div className="container-main text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -251,7 +316,7 @@ export function AboutPageClient() {
               <span className="text-terracotta italic">meaningful</span>{" "}
               together?
             </h2>
-            <a
+            {/* <a
               href={`mailto:${siteConfig.email}`}
               className="inline-flex items-center gap-4 px-8 py-4 bg-forest text-fg-inverse rounded-full hover:bg-sage-dark transition-colors duration-300"
             >
@@ -259,7 +324,7 @@ export function AboutPageClient() {
                 Let&#39;s talk
               </span>
               <span>→</span>
-            </a>
+            </a> */}
           </motion.div>
         </div>
       </section>

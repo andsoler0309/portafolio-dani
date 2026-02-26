@@ -87,6 +87,24 @@ export const projects: Project[] = [
       "Featured in 3 national wellness publications",
     ],
   },
+  {
+    id: "forma-running",
+    title: "360° Campaign & Content Hub",
+    client: "FORMA RUNNING",
+    category: "Campaign Strategy",
+    tags: ["Campaign", "Video Content", "Sports"],
+    description:
+      "Led the full content strategy for a performance running brand's seasonal campaign — from hero film concepts to a content hub that became their top acquisition channel.",
+    longDescription:
+      "Forma Running needed more than ads — they needed a narrative engine. I architected a 360° campaign built around the concept 'Every Stride Tells a Story,' producing a hero mini-documentary, athlete interview series, data-driven training content, and a content hub that unified blog, video, and community contributions into a single storytelling platform.",
+    image: "/images/project-4.jpg",
+    year: "2024",
+    results: [
+      "4.8M campaign impressions",
+      "Content hub became #1 organic acquisition channel",
+      "62% increase in brand search volume",
+    ],
+  },
 ];
 
 export const experiences: Experience[] = [
@@ -151,6 +169,46 @@ export const services = [
     title: "Community & Culture",
     description:
       "Turning audiences into communities. UGC frameworks, ambassador programs, and culture-first content that builds belonging.",
+  },
+];
+
+export interface PersonalProject {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  tags: string[];
+  gradient: string;
+  url?: string;
+}
+
+export const personalProjects: PersonalProject[] = [
+  {
+    id: "the-morning-brief",
+    title: "The Morning Brief",
+    tagline: "A daily newsletter on culture, wellness & creativity",
+    description:
+      "A curated daily newsletter blending wellness trends, cultural commentary, and creative inspiration. Grew to 8K subscribers organically in 6 months through word-of-mouth and strategic partnerships.",
+    tags: ["Newsletter", "Editorial", "Culture"],
+    gradient: "linear-gradient(135deg, #1A2E1A 0%, #8B9D77 50%, #A8B89A 100%)",
+  },
+  {
+    id: "grounded-podcast",
+    title: "Grounded",
+    tagline: "Conversations with founders who chose purpose over hype",
+    description:
+      "A long-form podcast interviewing founders in wellness, sport, and lifestyle who prioritize sustainable growth over virality. 45 episodes, 120K total listens, featured on Apple Podcasts 'New & Noteworthy.'",
+    tags: ["Podcast", "Interviews", "Founders"],
+    gradient: "linear-gradient(135deg, #C4704A 0%, #D4896A 50%, #FAF7F2 100%)",
+  },
+  {
+    id: "campo-zine",
+    title: "Campo",
+    tagline: "A seasonal digital zine on movement & place",
+    description:
+      "A quarterly digital publication exploring the intersection of movement, geography, and identity. Each issue is themed around a place and features photography, essays, and interviews with local athletes and artists.",
+    tags: ["Zine", "Photography", "Movement"],
+    gradient: "linear-gradient(135deg, #D4C5B0 0%, #8B9D77 50%, #1A2E1A 100%)",
   },
 ];
 

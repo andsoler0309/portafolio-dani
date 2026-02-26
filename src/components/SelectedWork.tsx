@@ -10,6 +10,7 @@ const gradients = [
   "linear-gradient(135deg, #8B9D77 0%, #A8B89A 50%, #D4C5B0 100%)",
   "linear-gradient(135deg, #C4704A 0%, #D4896A 50%, #E8DFD2 100%)",
   "linear-gradient(135deg, #1A2E1A 0%, #8B9D77 50%, #C4704A 100%)",
+  "linear-gradient(135deg, #D4C5B0 0%, #C4704A 50%, #1A2E1A 100%)",
 ];
 
 function ScrollCard({

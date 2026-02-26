@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
-const playfair = Playfair_Display({
+const syne = Syne({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const dmSans = DM_Sans({
@@ -39,10 +38,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${dmSans.variable} antialiased noise-overlay`}
+        className={`${syne.variable} ${dmSans.variable} antialiased noise-overlay`}
       >
         <Navigation />
-        <main>{children}</main>
+        <main className="relative z-10 bg-bg-primary">{children}</main>
         <Footer />
       </body>
     </html>
