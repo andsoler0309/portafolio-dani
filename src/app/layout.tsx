@@ -19,11 +19,11 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Daniela Reyes — Content Specialist | Wellness, Sports & Lifestyle",
+  title: "Daniela Amortegui — Content Specialist | Wellness, Sports & Lifestyle",
   description:
     "Content strategist for wellness, sports & lifestyle brands. Blending narrative, data, and cultural insight to build movements, not just campaigns.",
   openGraph: {
-    title: "Daniela Reyes — Content Specialist",
+    title: "Daniela Amortegui — Content Specialist",
     description:
       "Content strategist for wellness, sports & lifestyle brands.",
     type: "website",

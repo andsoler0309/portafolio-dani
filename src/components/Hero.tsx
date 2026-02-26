@@ -25,7 +25,7 @@ const letterVariants = {
 };
 
 export function Hero() {
-  const greeting = "Hola!, soy";
+  const greeting = "Hola, soy";
   const name = siteConfig.name;
 
   return (
