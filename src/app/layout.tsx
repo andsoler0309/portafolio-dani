@@ -3,6 +3,7 @@ import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const syne = Syne({
   variable: "--font-display",
@@ -41,6 +42,7 @@ export default function RootLayout({
         className={`${syne.variable} ${dmSans.variable} antialiased noise-overlay`}
       >
         <Navigation />
+        <ScrollToTop />
         <main className="relative z-10 bg-bg-primary">{children}</main>
         <Footer />
       </body>

@@ -98,7 +98,7 @@ function ScrollCard({
             {/* Hover tint */}
             <div className="absolute inset-0 bg-forest/0 group-hover:bg-forest/20 transition-colors duration-500" />
             {/* Readability gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 via-40% to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 via-60% to-transparent" />
 
             {/* Counter — top left */}
             <div className="absolute top-8 left-8 md:top-10 md:left-10">
@@ -144,19 +144,19 @@ function ScrollCard({
               </h3>
 
               {/* Category */}
-              <p className="text-white/55 text-xs md:text-sm uppercase tracking-widest mb-4">
+              <p className="text-white/75 text-xs md:text-sm uppercase tracking-widest mb-4">
                 {project.category}
               </p>
 
               {/* Description */}
-              <p className="text-white/75 text-sm md:text-base max-w-xl leading-relaxed">
+              <p className="text-white/95 text-sm md:text-base max-w-xl leading-relaxed">
                 {project.description}
               </p>
 
               {/* CTA */}
-              <div className="mt-5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                <span className="text-white/90 text-xs font-medium tracking-wider uppercase">Ver trabajo</span>
-                <motion.span className="inline-block text-white/90" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>
+              <div className="mt-5 flex items-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 translate-y-0 md:translate-y-2 md:group-hover:translate-y-0">
+                <span className="text-terracotta text-xs font-bold tracking-wider uppercase">Ver trabajo</span>
+                <motion.span className="inline-block text-terracotta" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>
                   →
                 </motion.span>
               </div>
@@ -172,7 +172,7 @@ export function SelectedWork() {
   return (
     <section id="work" aria-label="Trabajos seleccionados">
       <div className="container-main pt-16 md:pt-24">
-        <SectionHeader label="Trabajos seleccionados" count={projects.length} />
+        <SectionHeader label="Experiencia" count={projects.length} />
       </div>
 
       {/* Scroll stack container — each card gets a full viewport height */}
@@ -190,22 +190,24 @@ export function SelectedWork() {
         ))}
       </div>
 
-      <div className="container-main pb-16 md:pb-24 text-center">
-        <Link
-          href="/work"
-          className="inline-flex items-center gap-3 text-fg-primary hover:text-terracotta transition-colors duration-300 group"
-        >
-          <span className="text-sm font-medium tracking-wide uppercase">
-            Ver todos los trabajos
-          </span>
-          <motion.span
-            className="inline-block"
-            whileHover={{ x: 4 }}
-            transition={{ duration: 0.3 }}
+      <div className="container-main" style={{ paddingTop: "2rem", paddingBottom: "12rem" }}>
+        <div className="text-center">
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-3 text-fg-primary transition-colors duration-300 group"
           >
-            →
-          </motion.span>
-        </Link>
+            <span className="text-terracotta font-medium tracking-wide uppercase">
+              Ver toda la experiencia
+            </span>
+            <motion.span
+              className="inline-block text-terracotta"
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.3 }}
+            >
+              →
+            </motion.span>
+          </Link>
+        </div>
       </div>
     </section>
   );

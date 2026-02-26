@@ -1,3 +1,5 @@
+import { m } from "framer-motion";
+
 export interface Project {
   id: string;
   title: string;
@@ -8,8 +10,8 @@ export interface Project {
   longDescription: string;
   /** Texto para la sección "El desafío" en la página del caso */
   challenge?: string;
-  /** Texto para la sección "El enfoque" en la página del caso */
-  approach?: string;
+  /** Texto o bullets para la sección "El enfoque" en la página del caso */
+  approach?: string | string[];
   /** Bullets para la sección "El impacto" en la página del caso */
   impact?: string[];
   image: string;
@@ -43,9 +45,9 @@ export const siteConfig = {
 export const projects: Project[] = [
   {
     id: "mercado-libre",
-    title: "Estrategia del ecosistema de contenidos para Mercado Libre",
+    title: "Estrategia de contenidos para Mercado Libre",
     client: "MERCADO LIBRE",
-    category: "UX Writer",
+    category: "UX Writer y Content Strategist",
     tags: ["Brand Voice", "Editorial Strategy", "Wellness"],
     description:
       "Lideré y estructuré el ecosistema integral de contenidos para flujos clave del producto, alineando storytelling, data y equipos multidisciplinarios para garantizar coherencia de marca, claridad en la experiencia y resultados medibles a gran escala.",
@@ -53,8 +55,16 @@ export const projects: Project[] = [
       "Luma Wellness was stuck in generic health-speak. I led a complete narrative overhaul: new brand voice guidelines, editorial calendar, content pillars, and a storytelling framework that connected their mushroom-based supplements to deeper themes of daily ritual and intentional living.",
     challenge:
       "Los vendedores dentro del ecosistema necesitaban comprender cómo construir una buena reputación y ofrecer experiencias de compra que impactaran directamente su visibilidad, crecimiento y métricas como NPS. El reto era educar, motivar y acompañar a miles de usuarios en procesos complejos, como la sección de Reputación, sin generar fricción ni saturación informativa. Debíamos transformar reglas, métricas y conceptos técnicos en herramientas claras para que los vendedores entendieran cómo “tener una vitrina atractiva” y crecer dentro del marketplace",
-    approach:
-      "Lideré la estrategia de contenidos para flujos relacionados con Reputación y programas de crecimiento como el Programa de Despegue, diseñando una narrativa educativa orientada a la acción. Tradujimos métricas como NPS y criterios de desempeño en mensajes claros y accionables. Estructuramos contenidos que enseñaban buenas prácticas para mejorar experiencia de compra y posicionamiento. Diseñamos comunicaciones omnicanal (in-app, emails, notificaciones, FAQs y SEO). Trabajé transversalmente con Producto, Data y equipos comerciales para alinear contenido con objetivos de crecimiento. Definí y protegí lineamientos de tono y voz para garantizar coherencia con el ecosistema general de Mercado Libre. Coordiné y alineé entregables desarrollados por agencias externas para asegurar consistencia narrativa en todos los puntos de contacto. Documenté lineamientos editoriales para garantizar escalabilidad y estandarización.",
+    approach:[
+        "Lideré la estrategia de contenidos para flujos relacionados con Reputación y programas de crecimiento como el Programa de Despegue, diseñando una narrativa educativa orientada a la acción.",
+        "Traduje métricas como NPS y criterios de desempeño en mensajes claros y accionables.",
+        "Estructuré contenidos que enseñaban buenas prácticas para mejorar experiencia de compra y posicionamiento.",
+        "Diseñé comunicaciones omnicanal (in-app, emails, notificaciones, FAQs y SEO).",
+        "Trabajé transversalmente con Producto, Data y equipos comerciales para alinear contenido con objetivos de crecimiento.",
+        "Definí y protegí lineamientos de tono y voz para garantizar coherencia con el ecosistema general de Mercado Libre.",
+        "Coordiné y alineé entregables desarrollados por agencias externas para asegurar consistencia narrativa en todos los puntos de contacto.",
+        "Documenté lineamientos editoriales para garantizar escalabilidad y estandarización.",
+      ],
     impact: [
       "Mayor claridad en los criterios de reputación y desempeño para vendedores.",
       "Educación estratégica que impulsó mejores prácticas y fortaleció experiencia de compra.",
@@ -84,8 +94,14 @@ export const projects: Project[] = [
       "Stride Athletics had products but no soul. I built a content system that turned their community of 50K runners into co-creators. This included a UGC framework, athlete story templates, a weekly editorial series ('Miles & Mindset'), and performance content tied to real running data.",
     challenge:
       "Las marcas necesitaban ejecutar estrategias digitales integrales en entornos dinámicos, con múltiples equipos, entregables simultáneos y plazos ajustados. El reto era estructurar un sistema operativo claro que integrara estrategia, contenido, diseño y performance, garantizando coherencia narrativa, cumplimiento y calidad en todo el funnel.",
-    approach:
-      "Lideré la gestión integral de proyectos digitales para marcas como Bancolombia (Renting Colombia) y Prosalon, estructurando flujos de trabajo en HubSpot para asegurar visibilidad, control y eficiencia. Organicé y prioricé tareas, cronogramas y asignaciones entre equipos creativos, performance y cliente. Implementé seguimiento estructurado en HubSpot para gestionar el funnel completo de contenidos. Supervisé y validé cada pieza antes de producción, asegurando calidad editorial, coherencia de tono y alineación estratégica. Coordiné la comunicación entre equipos internos y stakeholders externos para mantener claridad y enfoque en objetivos de negocio. Optimicé procesos para reducir fricciones y mejorar tiempos de entrega.",
+    approach:[
+        "Lideré la gestión integral de proyectos digitales para marcas como Bancolombia (Renting Colombia) y Prosalon, estructurando flujos de trabajo en HubSpot para asegurar visibilidad, control y eficiencia.",
+        "Organicé y prioricé tareas, cronogramas y asignaciones entre equipos creativos, performance y cliente.",
+        "Implementé seguimiento estructurado en HubSpot para gestionar el funnel completo de contenidos.",
+        "Supervisé y validé cada pieza antes de producción, asegurando calidad editorial, coherencia de tono y alineación estratégica.",
+        "Coordiné la comunicación entre equipos internos y stakeholders externos para mantener claridad y enfoque en objetivos de negocio.",
+        "Optimicé procesos para reducir fricciones y mejorar tiempos de entrega.",
+    ],
     impact: [
       "Mayor eficiencia y orden en la operación de contenidos digitales.",
       "Consistencia narrativa y control de calidad en cada entrega.",
@@ -113,8 +129,15 @@ export const projects: Project[] = [
       "Terra Studio was a new concept: part yoga studio, part creative workspace, part café. I developed their editorial identity from scratch — name architecture, tone of voice, launch campaign copy, social content strategy, and an experiential content series called 'Grounded Sessions' that became their signature.",
     challenge:
       "Como startup fintech en crecimiento, Mesfix necesitaba construir posicionamiento, confianza y claridad en un mercado altamente competitivo y regulado. El reto era desarrollar una narrativa sólida que explicara un producto financiero complejo, generara credibilidad y acompañara momentos clave de crecimiento y comunicación sensible.",
-    approach:
-      "Diseñé y ejecuté la estrategia integral de contenidos digitales, integrando narrativa de marca, educación financiera y posicionamiento estratégico. Definí la voz y los pilares editoriales para redes sociales, blog, SEO y PR. Traducí conceptos financieros y técnicos en mensajes claros, educativos y accionables. Lideré campañas con influenciadores y medios para fortalecer visibilidad y credibilidad. Analicé métricas de desempeño y ajusté la estrategia con base en resultados. Aporté desde comunicación y experiencia de usuario en el desarrollo y lanzamiento de nuevos productos. Gestioné eventos estratégicos para posicionar la marca en el ecosistema fintech.",
+    approach:[
+      "Diseñé y ejecuté la estrategia integral de contenidos digitales, integrando narrativa de marca, educación financiera y posicionamiento estratégico.",
+      "Definí la voz y los pilares editoriales para redes sociales, blog, SEO y PR.",
+      "Traducí conceptos financieros y técnicos en mensajes claros, educativos y accionables.",
+      "Lideré campañas con influenciadores y medios para fortalecer visibilidad y credibilidad.",
+      "Analicé métricas de desempeño y ajusté la estrategia con base en resultados.",
+      "Aporté desde comunicación y experiencia de usuario en el desarrollo y lanzamiento de nuevos productos.",
+      "Gestioné eventos estratégicos para posicionar la marca en el ecosistema fintech.",
+    ],
     impact: [
       "Consolidación de una narrativa clara y coherente en todos los canales digitales.",
       "Mayor posicionamiento y visibilidad en el sector fintech.",
@@ -142,8 +165,14 @@ export const projects: Project[] = [
       "Forma Running needed more than ads — they needed a narrative engine. I architected a 360° campaign built around the concept 'Every Stride Tells a Story,' producing a hero mini-documentary, athlete interview series, data-driven training content, and a content hub that unified blog, video, and community contributions into a single storytelling platform.",
     challenge:
       "Gestionar múltiples marcas con necesidades y audiencias distintas, asegurando coherencia en comunicación digital y cumplimiento de objetivos de alcance y engagement. El reto era estructurar parrillas de contenido estratégicas y optimizar desempeño en un entorno multitarea y de alta exigencia.",
-    approach:
-      "Construí y ejecuté parrillas editoriales para diversas marcas, alineando tono, objetivos y formatos a cada audiencia. Monitoreé métricas clave como alcance, engagement y cumplimiento de metas digitales. Analicé resultados y ajusté estrategias con base en data. Elaboré reportes de desempeño para clientes y equipos internos. Apoyé campañas digitales y acciones de PR en medios digitales. Gestioné múltiples cuentas en simultáneo, organizando prioridades y entregables con enfoque estratégico.",
+    approach:[
+      "Construí y ejecuté parrillas editoriales para diversas marcas, alineando tono, objetivos y formatos a cada audiencia.",
+      "Monitoreé métricas clave como alcance, engagement y cumplimiento de metas digitales.",
+      "Analicé resultados y ajusté estrategias con base en data.",
+      "Elaboré reportes de desempeño para clientes y equipos internos.",
+      "Apoyé campañas digitales y acciones de PR en medios digitales.",
+      "Gestioné múltiples cuentas en simultáneo, organizando prioridades y entregables con enfoque estratégico.",
+    ],
     impact: [
         "Optimización continua del contenido a partir de métricas reales de desempeño.",
         "Mejora en coherencia editorial entre marcas y campañas.",
@@ -202,25 +231,25 @@ export const experiences: Experience[] = [
 export const services = [
   {
     number: "01",
-    title: "Diseño de Ecosistemas de Contenido",
+    title: "Diseño de ecosistemas de contenido",
     description:
       "Construyo estrategias integrales de contenido: pilares editoriales, calendarios, frameworks de distribución y flujos operativos escalables.",
   },
   {
     number: "02",
-    title: "Arquitectura de Marca y Voz",
+    title: "Arquitectura de marca y voz",
     description:
       "Defino y estructuro la identidad narrativa de las marcas: tono, principios editoriales y lineamientos de comunicación que aseguran coherencia en todos los puntos de contacto.",
   },
   {
     number: "03",
-    title: "Performance y Optimización Editorial",
+    title: "Performance y optimización editorial",
     description:
       "Analizo métricas de comportamiento y negocio para optimizar narrativa, formatos y distribución.",
   },
   {
     number: "04",
-    title: "Construcción de Comunidad y Cultura",
+    title: "Construcción de comunidad y cultura",
     description:
       "Desarrollo contenidos que trascienden la pieza individual y fortalecen pertenencia.",
   },
@@ -265,7 +294,7 @@ export const personalProjects: PersonalProject[] = [
     title: "FutFem Colombia",
     tagline: "Estrategia y Creación de Contenido para Instagram Deportivo",
     description:
-      "Desarrollo contenido sobre fútbol femenino para la cuenta de FutFemColombia, aplicando estructura editorial, claridad informativa y enfoque en engagement para fortalecer comunidad y visibilidad del deporte.",
+      "Desarrollo contenido sobre fútbol femenino para las redes sociales de FutFemColombia, aplicando estructura editorial, claridad informativa y enfoque en engagement para fortalecer comunidad y visibilidad del deporte.",
     tags: ["Zine", "Photography", "Movement"],
     gradient: "linear-gradient(135deg, #D4C5B0 0%, #8B9D77 50%, #1A2E1A 100%)",
     image: "/images/personal-project-3.jpg",

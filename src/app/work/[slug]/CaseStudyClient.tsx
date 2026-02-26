@@ -184,9 +184,20 @@ export function CaseStudyClient({ project }: { project: Project }) {
                 </h2>
               </div>
               <div>
-                <p className="text-fg-secondary leading-relaxed max-w-2xl" style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)" }}>
-                  {project.approach ?? project.longDescription}
-                </p>
+                {Array.isArray(project.approach) ? (
+                  <ul className="flex flex-col gap-4 max-w-2xl">
+                    {project.approach.map((item, i) => (
+                      <li key={i} className="flex items-start gap-4 text-fg-secondary leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)" }}>
+                        <span className="shrink-0 mt-[0.55rem] w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--terracotta)" }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-fg-secondary leading-relaxed max-w-2xl" style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)" }}>
+                    {project.approach ?? project.longDescription}
+                  </p>
+                )}
               </div>
             </div>
           </motion.section>

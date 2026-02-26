@@ -80,9 +80,9 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
           >
-            <p className="font-[family-name:var(--font-display)] text-2xl font-semibold mb-2">
+            {/* <p className="font-[family-name:var(--font-display)] text-2xl font-semibold mb-2">
               {siteConfig.initials}
-            </p>
+            </p> */}
             <p className="text-fg-muted text-sm">
               © {siteConfig.initials} — {new Date().getFullYear()}
             </p>

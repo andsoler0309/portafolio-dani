@@ -113,7 +113,7 @@ export function Hero() {
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                 className="w-[1px] h-8 bg-stone"
               />
-              <span className="text-fg-muted text-xs tracking-widest uppercase">
+              <span className="text-terracotta text-xs tracking-widest uppercase font-bold">
                 Scroll para explorar
               </span>
             </motion.div>

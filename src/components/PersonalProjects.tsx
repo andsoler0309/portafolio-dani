@@ -34,8 +34,8 @@ function ProjectCard({
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')]" />
 
         {/* Strong bottom gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-transparent" />
-        <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 via-50% to-transparent" />
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
 
         {/* Counter — top left */}
         <div className="absolute top-8 left-8 md:top-10 md:left-10">
@@ -63,7 +63,7 @@ function ProjectCard({
           style={{ padding: "0 2.5rem 3.5rem 2.5rem" }}
         >
           {/* Tagline */}
-          <p className="text-white/50 text-xs md:text-sm uppercase tracking-widest mb-3">
+          <p className="text-white/70 text-xs md:text-sm uppercase tracking-widest mb-3">
             {project.tagline}
           </p>
 
@@ -72,39 +72,29 @@ function ProjectCard({
             <h3 className="font-display text-3xl md:text-5xl font-medium text-white leading-[1.1]">
               {project.title}
             </h3>
-
-            {/* Link arrow */}
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="shrink-0 mt-1 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
-                aria-label={`Visitar ${project.title}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                </svg>
-              </a>
-            )}
           </div>
 
           {/* Description */}
-          <p className="text-white/70 text-sm md:text-base max-w-lg leading-relaxed">
+          <p className="text-white/90 text-sm md:text-base max-w-lg leading-relaxed">
             {project.description}
           </p>
+
+          {/* Link CTA */}
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="mt-5 flex items-center gap-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-0 md:translate-y-2 group-hover:translate-y-0"
+              aria-label={`Visitar ${project.title}`}
+            >
+              <span className="text-terracotta text-xs font-bold tracking-wider uppercase">Ver más</span>
+              <motion.span className="inline-block text-terracotta" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>
+                →
+              </motion.span>
+            </a>
+          )}
         </div>
       </div>
     </div>

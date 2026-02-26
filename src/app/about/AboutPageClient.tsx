@@ -71,9 +71,9 @@ export function AboutPageClient() {
                   priority
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 to-transparent" style={{ padding: "0 3rem 3.5rem 3rem" }}>
-                  <p className="text-white/80 text-xs tracking-widest uppercase mb-1">
+                  {/* <p className="text-white/80 text-xs tracking-widest uppercase mb-1">
                     Ubicada en Colombia 
-                  </p>
+                  </p> */}
                   <p className="text-white font-[family-name:var(--font-display)] text-xl italic">
                     Las historias son la manera en que le damos sentido al mundo.
                   </p>
@@ -92,7 +92,7 @@ export function AboutPageClient() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
               >
-                <p className="text-fg-muted text-sm tracking-widest uppercase mb-4">
+                <p className="text-sm tracking-widest uppercase mb-4 text-terracotta">
                   Sobre mí
                 </p>
                 <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] mb-8">
@@ -119,7 +119,7 @@ export function AboutPageClient() {
                   </p>
                   <p>
                     Soy maratonista, creadora de contenido de deporte y apasionada por el
-                    bienestar y la nutrición — integrando disciplina, comunidad y propósito
+                    bienestar y la nutrición. Me gusta integrar disciplina, comunidad y propósito
                     en mi forma de construir marca.
                   </p>
                 </div>
@@ -140,7 +140,7 @@ export function AboutPageClient() {
             transition={{ duration: 0.5 }}
             className="flex items-center justify-between pb-7 border-b border-stone/40 shrink-0"
           >
-            <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted font-medium">
+            <span className="text-[11px] tracking-[0.22em] uppercase text-terracotta font-medium">
               Valores
             </span>
             <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted/40 font-medium">
@@ -196,8 +196,8 @@ export function AboutPageClient() {
             transition={{ duration: 0.5 }}
             className="flex items-center justify-between pb-7 border-b border-stone/30 mb-16 shrink-0"
           >
-            <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted font-medium">
-              Skills y experticia
+            <span className="text-[11px] tracking-[0.22em] uppercase text-terracotta font-medium">
+              Habilidades
             </span>
             <span className="text-[11px] tracking-[0.22em] uppercase text-fg-muted/40 font-medium">
               {skills.length.toString().padStart(2, "0")}
@@ -238,7 +238,7 @@ export function AboutPageClient() {
                   }}
                   className="group flex-1 flex items-center justify-between gap-8 border-b border-stone/20 hover:border-stone/50 transition-colors duration-400 cursor-default"
                 >
-                  <span className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-fg-secondary group-hover:text-fg-primary transition-colors duration-300">
+                  <span className="font-[family-name:var(--font-display)] text-l md:text-xl font-normal text-fg-secondary group-hover:text-fg-primary transition-colors duration-300">
                     {skill}
                   </span>
                   <span className="text-[11px] text-fg-muted/40 group-hover:text-terracotta/60 transition-colors duration-300 tabular-nums shrink-0">

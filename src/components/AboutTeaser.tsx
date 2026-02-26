@@ -51,7 +51,7 @@ export function AboutTeaser() {
               <span className="text-terracotta italic">
                 porque el movimiento 
               </span>{" "}
-              me cambió a mí.
+              me cambió a mí
             </blockquote>
 
             <p className="text-fg-secondary text-base md:text-lg leading-relaxed mb-6 max-w-xl">
@@ -72,13 +72,13 @@ export function AboutTeaser() {
 
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 text-fg-primary hover:text-terracotta transition-colors duration-300 group"
+              className="inline-flex items-center gap-3 text-fg-primary transition-colors duration-300 group"
             >
-              <span className="text-sm font-medium tracking-wide uppercase">
+              <span className="text-sm font-bold tracking-wide uppercase text-terracotta">
                 Mas sobre mí
               </span>
               <motion.span
-                className="inline-block"
+                className="inline-block text-terracotta font-bold"
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.3 }}
               >
