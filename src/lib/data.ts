@@ -93,7 +93,7 @@ export const projects: Project[] = [
     longDescription:
       "Stride Athletics had products but no soul. I built a content system that turned their community of 50K runners into co-creators. This included a UGC framework, athlete story templates, a weekly editorial series ('Miles & Mindset'), and performance content tied to real running data.",
     challenge:
-      "Las marcas necesitaban ejecutar estrategias digitales integrales en entornos dinámicos, con múltiples equipos, entregables simultáneos y plazos ajustados. El reto era estructurar un sistema operativo claro que integrara estrategia, contenido, diseño y performance, garantizando coherencia narrativa, cumplimiento y calidad en todo el funnel.",
+      "Las marcas (Bancolombia y Renting) necesitaban ejecutar estrategias digitales integrales en entornos dinámicos, con múltiples equipos, entregables simultáneos y plazos ajustados. El reto era estructurar un sistema operativo claro que integrara estrategia, contenido, diseño y performance, garantizando coherencia narrativa, cumplimiento y calidad en todo el funnel.",
     approach:[
         "Lideré la gestión integral de proyectos digitales para marcas como Bancolombia (Renting Colombia) y Prosalon, estructurando flujos de trabajo en HubSpot para asegurar visibilidad, control y eficiencia.",
         "Organicé y prioricé tareas, cronogramas y asignaciones entre equipos creativos, performance y cliente.",
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     longDescription:
       "Forma Running needed more than ads — they needed a narrative engine. I architected a 360° campaign built around the concept 'Every Stride Tells a Story,' producing a hero mini-documentary, athlete interview series, data-driven training content, and a content hub that unified blog, video, and community contributions into a single storytelling platform.",
     challenge:
-      "Gestionar múltiples marcas con necesidades y audiencias distintas, asegurando coherencia en comunicación digital y cumplimiento de objetivos de alcance y engagement. El reto era estructurar parrillas de contenido estratégicas y optimizar desempeño en un entorno multitarea y de alta exigencia.",
+      "Gestionar múltiples marcas (BBC, EY, Iqos, Águila, Colsanitas y Yamaha) con necesidades y audiencias distintas, asegurando coherencia en comunicación digital y cumplimiento de objetivos de alcance y engagement. El reto era estructurar parrillas de contenido estratégicas y optimizar desempeño en un entorno multitarea y de alta exigencia.",
     approach:[
       "Construí y ejecuté parrillas editoriales para diversas marcas, alineando tono, objetivos y formatos a cada audiencia.",
       "Monitoreé métricas clave como alcance, engagement y cumplimiento de metas digitales.",
