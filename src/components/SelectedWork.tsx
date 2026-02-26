@@ -51,67 +51,87 @@ function ScrollCard({
           transformPerspective: 1200,
           transformStyle: "preserve-3d",
         }}
-        className="w-full max-w-[900px] mx-auto bg-bg-primary rounded-3xl p-4 md:p-6"
+        className="w-full max-w-[900px] mx-auto"
       >
         <Link
           href={`/work/${project.id}`}
           className="group block"
           aria-label={`View ${project.title} case study for ${project.client}`}
         >
-          {/* Image area */}
-          <div className="relative overflow-hidden rounded-2xl bg-bg-secondary aspect-[16/10] mb-6 shadow-2xl shadow-black/10">
+          {/* Full-height card */}
+          <div className="relative overflow-hidden rounded-3xl h-[80vh] shadow-2xl shadow-black/10">
+            {/* Gradient background */}
             <div
               className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               style={{ background: gradients[index % gradients.length] }}
             />
+            {/* Hover tint */}
             <div className="absolute inset-0 bg-forest/0 group-hover:bg-forest/20 transition-colors duration-500" />
+            {/* Readability gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
 
-            {/* Counter */}
-            <div className="absolute top-6 left-6">
-              <span className="font-[family-name:var(--font-display)] text-6xl md:text-8xl font-light text-white/20">
+            {/* Counter — top left */}
+            <div className="absolute top-8 left-8 md:top-10 md:left-10">
+              <span className="font-[family-name:var(--font-display)] text-6xl md:text-8xl font-light text-white/15">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
 
-            {/* Category pills */}
-            <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-cream/95 backdrop-blur-md rounded-full text-[9px] font-bold tracking-[0.15em] uppercase text-forest/95 border border-forest/10"
-                  style={{ padding: "0.3rem 1rem" }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {/* Year */}
-            <div className="absolute top-5 right-5">
-              <span className="bg-cream/95 backdrop-blur-md rounded-full text-[9px] font-bold tracking-[0.15em] text-forest/95 border border-forest/10"
-                style={{ padding: "0.3rem 1rem" }}>
+            {/* Client + Year — top right */}
+            <div className="absolute top-8 right-8 md:top-10 md:right-10 flex items-center gap-2">
+              <span
+                className="bg-cream/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-[0.15em] uppercase text-forest/95 border border-forest/10"
+                style={{ padding: "0.3rem 1rem" }}
+              >
+                {project.client}
+              </span>
+              <span
+                className="bg-cream/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-[0.15em] text-forest/95 border border-forest/10"
+                style={{ padding: "0.3rem 1rem" }}
+              >
                 {project.year}
               </span>
             </div>
-          </div>
 
-          {/* Text content */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 px-2">
-            <div>
-              <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium text-fg-primary group-hover:text-terracotta transition-colors duration-300">
+            {/* Bottom content — tags, title, description */}
+            <div className="absolute bottom-0 left-0 right-0" style={{ padding: "0 3rem 3.5rem 3rem" }}>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-cream/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-[0.15em] uppercase text-forest/95 border border-forest/10"
+                    style={{ padding: "0.3rem 1rem" }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Title */}
+              <h3 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-medium text-white group-hover:text-cream/80 transition-colors duration-300 mb-2">
                 {project.title}
               </h3>
-              <p className="text-fg-muted text-sm mt-1">{project.category}</p>
-            </div>
-            <span className="text-fg-primary font-medium text-sm tracking-wider uppercase shrink-0 mt-1">
-              {project.client}
-            </span>
-          </div>
 
-          {/* Description */}
-          <p className="text-fg-secondary text-sm md:text-base mt-3 max-w-2xl leading-relaxed px-2">
-            {project.description}
-          </p>
+              {/* Category */}
+              <p className="text-white/55 text-xs md:text-sm uppercase tracking-widest mb-4">
+                {project.category}
+              </p>
+
+              {/* Description */}
+              <p className="text-white/75 text-sm md:text-base max-w-xl leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* CTA */}
+              <div className="mt-5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                <span className="text-white/90 text-xs font-medium tracking-wider uppercase">View case study</span>
+                <motion.span className="inline-block text-white/90" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>
+                  →
+                </motion.span>
+              </div>
+            </div>
+          </div>
         </Link>
       </motion.div>
     </div>

@@ -15,6 +15,7 @@ const navLinks = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isInWorkSection, setIsInWorkSection] = useState(false);
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
@@ -25,12 +26,25 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
+  useEffect(() => {
+    const workSection = document.getElementById("work");
+    if (!workSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInWorkSection(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(workSection);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <motion.header
         initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        animate={{ y: isInWorkSection ? -80 : 0, opacity: isInWorkSection ? 0 : 1 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "backdrop-blur-xl bg-bg-primary/80 border-b border-stone/20"
