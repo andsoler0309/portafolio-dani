@@ -80,7 +80,7 @@ export function Hero() {
             </h1>
 
             {/* Title accent */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -89,7 +89,7 @@ export function Hero() {
               <span className="inline-block px-4 py-2 rounded-full border border-sage/40 text-sage-dark text-xs md:text-sm font-medium tracking-wide uppercase">
                 {siteConfig.title}
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Tagline */}
             <motion.p
