@@ -9,7 +9,7 @@ export function Services() {
       className="min-h-screen bg-bg-primary flex flex-col justify-center py-20 md:py-28"
     >
       <div className="container-main flex flex-col h-full gap-12 md:gap-16">
-        <SectionHeader label="What I do" count={services.length} />
+        <SectionHeader label="Lo que hago" count={services.length} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 flex-1">
           {services.map((service) => (
@@ -31,21 +31,7 @@ export function Services() {
                   <span className="text-terracotta font-[family-name:var(--font-display)] text-4xl md:text-5xl font-light opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                     {service.number}
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-stone/30 flex items-center justify-center group-hover:border-sage group-hover:bg-sage/10 transition-all duration-300">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      className="text-fg-muted group-hover:text-sage transition-colors duration-300"
-                    >
-                      <path
-                        d="M1 11L11 1M11 1H4M11 1V8"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                      />
-                    </svg>
-                  </div>
+                  
                 </div>
 
                 <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium mb-4 group-hover:text-terracotta transition-colors duration-300 leading-snug">

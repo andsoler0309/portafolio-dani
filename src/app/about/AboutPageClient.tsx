@@ -297,7 +297,7 @@ export function AboutPageClient() {
       </section> */}
 
       {/* CTA */}
-      <section className="page-section" style={{ height: "100vh", paddingTop: "5rem", paddingBottom: "5rem" }}>
+      {/*<section className="page-section" style={{ height: "100vh", paddingTop: "5rem", paddingBottom: "5rem" }}>
         <div className="container-main text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -310,7 +310,7 @@ export function AboutPageClient() {
               <span className="text-terracotta italic">meaningful</span>{" "}
               together?
             </h2>
-            {/* <a
+             <a
               href={`mailto:${siteConfig.email}`}
               className="inline-flex items-center gap-4 px-8 py-4 bg-forest text-fg-inverse rounded-full hover:bg-sage-dark transition-colors duration-300"
             >
@@ -318,10 +318,10 @@ export function AboutPageClient() {
                 Let&#39;s talk
               </span>
               <span>→</span>
-            </a> */}
+            </a> 
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

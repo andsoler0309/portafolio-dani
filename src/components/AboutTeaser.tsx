@@ -47,25 +47,27 @@ export function AboutTeaser() {
             className="lg:col-span-7"
           >
             <blockquote className="font-[family-name:var(--font-display)] text-2xl md:text-3xl lg:text-4xl font-medium leading-snug mb-8 text-fg-primary">
-              I love to inspire, because I know what it&#39;s like to be
-              inspired.{" "}
+              Creo historias que mueven personas{" "}
               <span className="text-terracotta italic">
-                Seeing stories land and communities grow
+                porque el movimiento 
               </span>{" "}
-              — that&#39;s what it&#39;s all about.
+              me cambió a mí.
             </blockquote>
 
             <p className="text-fg-secondary text-base md:text-lg leading-relaxed mb-6 max-w-xl">
-              I&#39;m a content strategist who lives at the intersection of
-              wellness culture, athletic identity, and brand psychology. My work
-              is rooted in the belief that every brand has a story worth telling
-              — you just need someone who listens first.
+              Sé lo que se siente buscar inspiración y sé el impacto que tiene una historia cuando realmente conecta.
             </p>
 
             <p className="text-fg-secondary text-base md:text-lg leading-relaxed mb-10 max-w-xl">
-              When I&#39;m not building content systems, you&#39;ll find me on a
-              trail run, in a breathwork session, or deep in a book about
-              behavioral psychology.
+              Soy estratega de contenidos y trabajo en la intersección entre disciplina, emoción y estructura. Creo que las marcas no necesitan hablar más fuerte, sino con más claridad, coherencia y propósito.
+            </p>
+
+            <p className="text-fg-secondary text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+              Diseño ecosistemas de contenido que escalan, alineando narrativa, equipos y métricas para generar impacto real. Pero nunca olvido que al otro lado hay una persona: alguien que quiere entender, confiar y pertenecer.
+            </p>
+
+            <p className="text-fg-secondary text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+              Correr me enseñó que la consistencia construye fuerza y el contenido me enseñó que la claridad construye confianza. Estoy segura de que el contenido no se trata solamete de publicar, se trata de mover algo en quien lo recibe.
             </p>
 
             <Link
@@ -73,7 +75,7 @@ export function AboutTeaser() {
               className="inline-flex items-center gap-3 text-fg-primary hover:text-terracotta transition-colors duration-300 group"
             >
               <span className="text-sm font-medium tracking-wide uppercase">
-                More about me
+                Mas sobre mí
               </span>
               <motion.span
                 className="inline-block"

@@ -141,7 +141,7 @@ export function PersonalProjects() {
         <div className="pb-8 px-8 md:px-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-fg-muted text-[10px] tracking-[0.2em] uppercase">
-              Scroll to explore
+              Scroll para explorar
             </span>
             <motion.span
               animate={{ x: [0, 8, 0] }}

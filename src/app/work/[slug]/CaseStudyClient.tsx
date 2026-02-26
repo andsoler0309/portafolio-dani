@@ -7,243 +7,279 @@ import type { Project } from "@/lib/data";
 
 export function CaseStudyClient({ project }: { project: Project }) {
   return (
-    <div style={{ paddingTop: "var(--nav-height)" }}>
-      <article className="page-section">
-        <div className="container-main">
-          {/* Back link */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 text-fg-muted hover:text-fg-primary transition-colors duration-300 text-sm"
-            >
-              <span>←</span>
-              <span className="tracking-wide uppercase">All work</span>
-            </Link>
-          </motion.div>
+    <div>
+      {/* ─────────────────────────────────────────
+          HERO — full viewport, image + title overlay
+      ───────────────────────────────────────── */}
+      <div
+        className="relative flex flex-col justify-end overflow-hidden"
+        style={{ minHeight: "100svh", paddingTop: "var(--nav-height)" }}
+      >
+        {/* Full-bleed image */}
+        <div className="absolute inset-0 z-0">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority
+            />
+          ) : (
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(145deg, #8B9D77 0%, #A8B89A 40%, #D4C5B0 70%, #C4704A 100%)",
+              }}
+            />
+          )}
+          {/* dark gradient overlay so text is readable */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.85) 100%)",
+            }}
+          />
+        </div>
 
-          {/* Header */}
+        {/* Back link top-left */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute z-10"
+          style={{ top: "calc(var(--nav-height) + 2rem)", left: "clamp(1.5rem, 4vw, 4rem)" }}
+        >
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 text-xs tracking-widest uppercase"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M12 8H4M4 8l4-4M4 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Todos los trabajos
+          </Link>
+        </motion.div>
+
+        {/* Title block anchored to bottom */}
+        <div className="relative z-10 container-main pb-16 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-12 md:mb-16"
+            transition={{ delay: 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex flex-wrap items-center gap-4 mb-4">
-              <span className="text-fg-primary font-medium text-sm tracking-wider uppercase">
-                {project.client}
-              </span>
-              <span className="w-1 h-1 rounded-full bg-fg-muted" />
-              <span className="text-fg-muted text-sm">{project.category}</span>
-              <span className="w-1 h-1 rounded-full bg-fg-muted" />
-              <span className="text-fg-muted text-sm">{project.year}</span>
+            {/* Meta */}
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <span className="text-white/90 text-xs tracking-widest uppercase font-semibold">{project.client}</span>
+              <span className="w-1 h-1 rounded-full bg-white/50" />
+              <span className="text-white/90 text-xs tracking-widest uppercase font-semibold">{project.category}</span>
+              <span className="w-1 h-1 rounded-full bg-white/50" />
+              <span className="text-white/90 text-xs font-semibold">{project.year}</span>
             </div>
-            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] mb-6">
+
+            {/* Main title */}
+            <h1
+              className="font-display font-bold leading-none tracking-tight text-white mb-8 max-w-4xl"
+              style={{ fontSize: "clamp(2.2rem, 5.5vw, 5rem)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+            >
               {project.title}
             </h1>
-            <div className="flex flex-wrap gap-2">
+
+            {/* Tags */}
+            {/* <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-1.5 border border-stone/30 rounded-full text-xs font-medium text-fg-secondary"
+                  className="px-4 py-1.5 rounded-full text-xs text-white font-medium tracking-wide"
+                  style={{ border: "1px solid rgba(255,255,255,0.5)", backdropFilter: "blur(4px)", background: "rgba(255,255,255,0.08)" }}
                 >
                   {tag}
                 </span>
               ))}
-            </div>
+            </div> */}
           </motion.div>
+        </div>
+      </div>
 
-          {/* Hero image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-2xl bg-bg-secondary aspect-[16/9] mb-16 md:mb-20"
+      {/* ─────────────────────────────────────────
+          BODY CONTENT
+      ───────────────────────────────────────── */}
+      <article>
+        <div className="container-main">
+
+          {/* ── El desafío ── */}
+          <motion.section
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ padding: "clamp(5rem, 10vw, 10rem) 0", borderBottom: "1px solid var(--stone)" }}
           >
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                priority
-              />
-            ) : (
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #8B9D77 0%, #A8B89A 30%, #D4C5B0 60%, #C4704A 100%)",
-                }}
-              />
-            )}
-          </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 lg:gap-28">
+              {/* Lead */}
+              <div>
+                <h2
+                  className="font-display font-medium leading-[1.05] tracking-tight mb-8"
+                  style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)", color: "var(--fg-primary)" }}
+                >
+                  El desafío
+                </h2>
+                <p
+                  className="text-fg-secondary leading-relaxed"
+                  style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)" }}
+                >
+                  {project.challenge ?? project.description}
+                </p>
+              </div>
 
-          {/* Content grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-            {/* Sidebar */}
-            <motion.aside
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.4,
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="lg:col-span-4"
-            >
-              <div className="sticky top-24 space-y-8">
+              {/* Sidebar facts */}
+              <div className="flex flex-col gap-10 border-l pl-10 lg:pl-14" style={{ borderColor: "var(--stone)" }}>
                 <div>
-                  <h3 className="section-label mb-3">Role</h3>
-                  <p className="text-fg-primary text-sm">
-                    Content Strategy, Brand Voice, Editorial Direction
+                  <p className="section-label mb-4">Cliente</p>
+                  <p className="font-display text-2xl font-medium">{project.client}</p>
+                </div>
+                <div>
+                  <p className="section-label mb-4">Rol</p>
+                  <p className="text-fg-secondary text-base leading-relaxed">
+                    {project.category}
                   </p>
                 </div>
                 <div>
-                  <h3 className="section-label mb-3">Timeline</h3>
-                  <p className="text-fg-primary text-sm">
-                    {project.year} · 4 months
-                  </p>
+                  <p className="section-label mb-4">Año</p>
+                  <p className="text-fg-secondary text-base">{project.year}</p>
                 </div>
-                <div>
-                  <h3 className="section-label mb-3">Deliverables</h3>
-                  <ul className="space-y-1.5">
-                    {[
-                      "Brand Voice Guidelines",
-                      "Content Pillars Framework",
-                      "Editorial Calendar",
-                      "Campaign Narratives",
-                      "Performance Reporting",
-                    ].map((d) => (
-                      <li key={d} className="text-fg-primary text-sm">
+                {/* <div>
+                  <p className="section-label mb-4">Entregables</p>
+                  <ul className="flex flex-col gap-3">
+                    {["Brand Voice Guidelines", "Content Pillars Framework", "Editorial Calendar", "Campaign Narratives", "Performance Reporting"].map((d) => (
+                      <li key={d} className="text-fg-secondary text-sm flex items-start gap-3">
+                        <span className="mt-[0.4rem] shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--terracotta)" }} />
                         {d}
                       </li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
               </div>
-            </motion.aside>
+            </div>
+          </motion.section>
 
-            {/* Main content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.5,
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="lg:col-span-8"
+          {/* ── El enfoque ── */}
+          <motion.section
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ padding: "clamp(5rem, 10vw, 10rem) 0", borderBottom: "1px solid var(--stone)" }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-16 lg:gap-28">
+              <div>
+                <h2
+                  className="font-display font-medium leading-[1.05] tracking-tight mt-1"
+                  style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)", color: "var(--fg-primary)" }}
+                >
+                  El enfoque
+                </h2>
+              </div>
+              <div>
+                <p className="text-fg-secondary leading-relaxed max-w-2xl" style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)" }}>
+                  {project.approach ?? project.longDescription}
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* ── El impacto ── */}
+          {(project.impact ?? project.results) && (
+            <motion.section
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ padding: "clamp(5rem, 10vw, 10rem) 0", borderBottom: "1px solid var(--stone)" }}
             >
-              <div className="space-y-12">
-                {/* Challenge */}
-                <div>
-                  <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium mb-4">
-                    The Challenge
-                  </h2>
-                  <p className="text-fg-secondary text-base md:text-lg leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Approach */}
-                <div>
-                  <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium mb-4">
-                    The Approach
-                  </h2>
-                  <p className="text-fg-secondary text-base md:text-lg leading-relaxed">
-                    {project.longDescription}
-                  </p>
-                </div>
-
-                {/* Process images placeholder */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="aspect-[4/3] rounded-xl bg-bg-secondary overflow-hidden">
-                    <div
-                      className="w-full h-full"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #D4C5B0 0%, #8B9D77 100%)",
-                      }}
+              <h2
+                className="font-display font-medium leading-[1.05] tracking-tight mb-16 md:mb-20"
+                style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)", color: "var(--fg-primary)" }}
+              >
+                El impacto
+              </h2>
+              <ul className="flex flex-col" style={{ borderTop: "1px solid var(--stone)" }}>
+                {(project.impact ?? project.results ?? []).map((result, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-start gap-5 py-6"
+                    style={{ borderBottom: "1px solid var(--stone)" }}
+                  >
+                    <span
+                      className="shrink-0 mt-[0.45rem] w-2 h-2 rounded-full"
+                      style={{ backgroundColor: "var(--terracotta)" }}
                     />
-                  </div>
-                  <div className="aspect-[4/3] rounded-xl bg-bg-secondary overflow-hidden">
-                    <div
-                      className="w-full h-full"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #C4704A 0%, #D4C5B0 100%)",
-                      }}
-                    />
-                  </div>
-                </div>
+                    <p className="text-fg-secondary leading-relaxed" style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}>
+                      {result}
+                    </p>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.section>
+          )}
 
-                {/* Results */}
-                {project.results && (
-                  <div>
-                    <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium mb-6">
-                      The Impact
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {project.results.map((result, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: i * 0.1, duration: 0.5 }}
-                          className="p-5 rounded-xl border border-sage/20 bg-sage/5"
-                        >
-                          <p className="text-fg-primary text-sm font-medium leading-relaxed">
-                            {result}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+          {/* ── Quote ── */}
+          {/* <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ padding: "clamp(6rem, 12vw, 12rem) 0", borderBottom: "1px solid var(--stone)" }}
+          >
+            <div className="max-w-3xl mx-auto text-center">
+              <p
+                className="font-display font-medium leading-[1.15] tracking-tight mb-10"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", color: "var(--fg-primary)" }}
+              >
+                &ldquo;El gran contenido no solo sirve a la marca — sirve a las personas para quienes la marca existe.&rdquo;
+              </p>
+              <p className="section-label">Daniela Amórtegui</p>
+            </div>
+          </motion.section> */}
 
-                {/* Reflection */}
-                <div className="border-l-2 border-terracotta/40 pl-6 py-2">
-                  <p className="font-[family-name:var(--font-display)] text-lg md:text-xl italic text-fg-primary leading-relaxed">
-                    &ldquo;This project reminded me that great content
-                    doesn&#39;t just serve the brand — it serves the people the
-                    brand exists for.&rdquo;
-                  </p>
-                  <p className="text-fg-muted text-sm mt-3">
-                    — Daniela, reflecting on this project
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Navigation to other projects */}
+          {/* ── Navigation ── */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-20 md:mt-28 pt-12 border-t border-stone/20 flex justify-between items-center"
+            transition={{ duration: 0.7 }}
+            style={{ padding: "clamp(3rem, 6vw, 5rem) 0" }}
+            className="flex items-center justify-between"
           >
             <Link
               href="/work"
-              className="text-fg-secondary hover:text-fg-primary transition-colors text-sm tracking-wide uppercase"
+              className="inline-flex items-center gap-3 text-xs font-medium tracking-widest uppercase transition-colors duration-300 hover:text-terracotta"
+              style={{ color: "var(--fg-muted)" }}
             >
-              ← All projects
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M12 8H4M4 8l4-4M4 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Todos los proyectos
             </Link>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 text-fg-primary hover:text-terracotta transition-colors text-sm tracking-wide uppercase"
+              className="inline-flex items-center gap-3 text-xs font-medium tracking-widest uppercase transition-colors duration-300 hover:text-terracotta"
+              style={{ color: "var(--fg-muted)" }}
             >
-              Next project →
+              Siguiente proyecto
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </motion.div>
+
         </div>
       </article>
     </div>

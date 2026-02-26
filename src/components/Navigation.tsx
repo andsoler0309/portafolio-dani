@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/data";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -13,10 +14,13 @@ const navLinks = [
 ];
 
 export function Navigation() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isInWorkSection, setIsInWorkSection] = useState(false);
   const [isInPersonalProjects, setIsInPersonalProjects] = useState(false);
+  const [isInServices, setIsInServices] = useState(false);
+  const [isInAboutTeaser, setIsInAboutTeaser] = useState(false);
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
@@ -26,6 +30,14 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  // Reset all section states on route change
+  useEffect(() => {
+    setIsInWorkSection(false);
+    setIsInPersonalProjects(false);
+    setIsInServices(false);
+    setIsInAboutTeaser(false);
+  }, [pathname]);
 
   useEffect(() => {
     const workSection = document.getElementById("work");
@@ -38,7 +50,7 @@ export function Navigation() {
 
     observer.observe(workSection);
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     const personalSection = document.getElementById("personal-projects");
@@ -51,15 +63,41 @@ export function Navigation() {
 
     observer.observe(personalSection);
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
+
+  useEffect(() => {
+    const servicesSection = document.getElementById("services");
+    if (!servicesSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInServices(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(servicesSection);
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  useEffect(() => {
+    const aboutTeaserSection = document.getElementById("about-teaser");
+    if (!aboutTeaserSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInAboutTeaser(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(aboutTeaserSection);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   return (
     <>
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{
-          y: (isInWorkSection || isInPersonalProjects) ? -80 : 0,
-          opacity: (isInWorkSection || isInPersonalProjects) ? 0 : 1,
+          y: ((isInWorkSection || isInPersonalProjects || isInServices) && !isInAboutTeaser) ? -80 : 0,
+          opacity: ((isInWorkSection || isInPersonalProjects || isInServices) && !isInAboutTeaser) ? 0 : 1,
         }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${

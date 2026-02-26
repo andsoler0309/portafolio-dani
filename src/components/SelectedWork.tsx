@@ -53,7 +53,7 @@ function ScrollCard({
           transformPerspective: 1200,
           transformStyle: "preserve-3d",
         }}
-        className="w-full max-w-[900px] mx-auto"
+        className="w-full max-w-[900px] mx-auto md:px-4"
       >
         <Link
           href={`/work/${project.id}`}
@@ -61,7 +61,7 @@ function ScrollCard({
           aria-label={`View ${project.title} case study for ${project.client}`}
         >
           {/* Full-height card */}
-          <div className="relative overflow-hidden rounded-3xl h-[80vh]">
+          <div className="relative overflow-hidden rounded-none md:rounded-3xl h-screen md:h-[80vh]">
             {/* Background */}
             {project.image && project.imageLayout === "cover" ? (
               <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">
@@ -124,7 +124,7 @@ function ScrollCard({
             </div>
 
             {/* Bottom content — tags, title, description */}
-            <div className="absolute bottom-0 left-0 right-0" style={{ padding: "0 3rem 3.5rem 3rem" }}>
+            <div className="absolute bottom-0 left-0 right-0" style={{ padding: "0 2.5rem 3.5rem 2.5rem" }}>
               {/* Tags */}
               {/* <div className="flex flex-wrap gap-2 mb-5">
                 {project.tags.map((tag) => (
