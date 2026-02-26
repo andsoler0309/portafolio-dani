@@ -61,7 +61,7 @@ function ScrollCard({
           aria-label={`View ${project.title} case study for ${project.client}`}
         >
           {/* Full-height card */}
-          <div className="relative overflow-hidden rounded-none md:rounded-3xl h-screen md:h-[80vh]">
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl h-screen md:h-[80vh]">
             {/* Background */}
             {project.image && project.imageLayout === "cover" ? (
               <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">

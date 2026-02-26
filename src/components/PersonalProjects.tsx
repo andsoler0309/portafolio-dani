@@ -1,9 +1,22 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { personalProjects } from "@/lib/data";
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+    const onChange = (e: MediaQueryListEvent | MediaQueryList) =>
+      setIsMobile(e.matches);
+    onChange(mql);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 function ProjectCard({
   project,
@@ -13,8 +26,8 @@ function ProjectCard({
   index: number;
 }) {
   return (
-    <div className="w-[85vw] md:w-[60vw] lg:w-[45vw] shrink-0 h-full flex items-center">
-      <div className="relative w-full h-[80vh] rounded-3xl overflow-hidden group cursor-default">
+    <div className="w-full md:w-[60vw] lg:w-[45vw] shrink-0 h-full flex items-center">
+      <div className="relative w-full h-[65vh] md:h-[80vh] rounded-3xl overflow-hidden group cursor-default">
         {/* Background: image if provided, else gradient */}
         <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">
           {project.image ? (
@@ -101,8 +114,28 @@ function ProjectCard({
   );
 }
 
+function MobileCarouselDots({ activeIndex }: { activeIndex: number }) {
+  return (
+    <div className="flex gap-2 justify-center">
+      {personalProjects.map((_, i) => (
+        <div
+          key={i}
+          className="h-2 rounded-full bg-terracotta transition-all duration-300"
+          style={{
+            width: i === activeIndex ? 24 : 8,
+            opacity: i === activeIndex ? 1 : 0.3,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function PersonalProjects() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -110,15 +143,95 @@ export function PersonalProjects() {
   });
 
   // Map vertical scroll (0→1) to horizontal translation
-  // We need to move from 0 to -(totalWidth - viewportWidth)
-  // With 3 cards at ~45vw each + gaps, roughly 135vw - 100vw = 35vw of overflow
-  // We'll use percentage of the container
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-65%"]);
 
   // Subtle parallax for header
   const headerOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const headerY = useTransform(scrollYProgress, [0, 0.15], [0, -40]);
 
+  // Track active card on mobile via native scroll
+  useEffect(() => {
+    if (!isMobile) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const onScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.scrollWidth / personalProjects.length;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveCardIndex(Math.min(index, personalProjects.length - 1));
+    };
+
+    container.addEventListener("scroll", onScroll, { passive: true });
+    return () => container.removeEventListener("scroll", onScroll);
+  }, [isMobile]);
+
+  /* ─── Mobile: native horizontal swipe carousel ─── */
+  if (isMobile) {
+    return (
+      <section
+        className="relative bg-bg-primary min-h-screen flex flex-col justify-between"
+        style={{ marginBottom: "10rem" }}
+        id="personal-projects"
+        aria-label="Proyectos personales"
+      >
+        {/* Header */}
+        <div className="px-6 pt-10 pb-4">
+          <div className="flex items-center gap-4 mb-2">
+            <span className="text-fg-muted text-xs tracking-[0.2em] uppercase font-medium">
+              Proyectos personales
+            </span>
+            <span className="h-px flex-1 bg-stone/30" />
+            <span className="text-fg-muted text-xs tracking-wider font-mono">
+              {String(personalProjects.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+
+        {/* Swipeable card track */}
+        <div
+          ref={scrollContainerRef}
+          className="flex-1 flex items-center gap-4 px-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+          style={{
+            WebkitOverflowScrolling: "touch",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
+          {personalProjects.map((project, i) => (
+            <div
+              key={project.id}
+              className="snap-center shrink-0 h-full flex items-center"
+              style={{ width: "85vw" }}
+            >
+              <ProjectCard project={project} index={i} />
+            </div>
+          ))}
+          {/* Right padding spacer so last card can center */}
+          <div className="shrink-0 w-[15vw]" aria-hidden />
+        </div>
+
+        {/* Swipe hint + dots */}
+        <div className="px-6 py-6 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-fg-muted text-[10px] tracking-[0.2em] uppercase">
+              Desliza para explorar
+            </span>
+            <motion.span
+              animate={{ x: [0, 8, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="text-fg-muted text-sm"
+            >
+              →
+            </motion.span>
+          </div>
+          <MobileCarouselDots activeIndex={activeCardIndex} />
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Desktop: vertical-scroll-driven horizontal animation ─── */
   return (
     <section
       ref={sectionRef}
@@ -157,7 +270,7 @@ export function PersonalProjects() {
         </div>
 
         {/* Scroll indicator at bottom */}
-        <div className="pb-8 px-8 md:px-16 flex items-center justify-between">
+        <div className="shrink-0 pt-5 pb-14 md:pb-10 px-8 md:px-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-fg-muted text-[10px] tracking-[0.2em] uppercase">
               Scroll para explorar
